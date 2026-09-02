@@ -1,6 +1,7 @@
 package br.com.daSilva.apiDeOficinaMecanica.dto.request;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -16,9 +17,9 @@ import java.util.UUID;
 @Builder
 public class OrdemDeServicoDto {
 
-    @Column(nullable = false)
+    @NotBlank
     private String descricao;
-   @NotNull
+    @NotNull
     private UUID clienteId;
     @NotNull
     private UUID veiculoId;
