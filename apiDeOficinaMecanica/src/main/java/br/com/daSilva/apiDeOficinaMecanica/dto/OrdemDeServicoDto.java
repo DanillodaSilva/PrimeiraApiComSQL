@@ -13,24 +13,21 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
 
-@Entity
-@Table(name = "Clientes")
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class OrdemDeServicoDto {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private UUID id;
+
     @Column(nullable = false)
-    private Optional<String> descricao;
+    private String descricao;
    @NotNull
-    private UUID alunoId;
+    private UUID clienteId;
     @NotNull
     private UUID veiculoId;
     @NotEmpty
-    private Set<ServicoEntity> servico;
+    private Set<UUID> servicoIds;
 
 }

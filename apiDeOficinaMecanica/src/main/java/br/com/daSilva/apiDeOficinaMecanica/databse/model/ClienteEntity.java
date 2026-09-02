@@ -9,7 +9,7 @@ import java.util.Set;
 import java.util.UUID;
 
 @Entity
-@Table(name = "Clientes")
+@Table(name = "clientes")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -17,11 +17,11 @@ import java.util.UUID;
 @Builder
 public class ClienteEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     @Column(nullable = false)
     private String nome;
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String email;
 
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)

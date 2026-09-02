@@ -8,7 +8,7 @@ import java.util.Set;
 import java.util.UUID;
 
 @Entity
-@Table(name = "Carros")
+@Table(name = "carros")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -16,7 +16,7 @@ import java.util.UUID;
 @Builder
 public class VeiculoEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     @Column(nullable = false)
     private String modelo;
@@ -24,7 +24,7 @@ public class VeiculoEntity {
     private String placa;
 
     @ManyToOne
-    @JoinColumn(name = "Cliente_id")
+    @JoinColumn(name = "cliente_id")
     private  ClienteEntity cliente;
 
     @OneToMany(mappedBy = "veiculo", cascade = CascadeType.ALL)

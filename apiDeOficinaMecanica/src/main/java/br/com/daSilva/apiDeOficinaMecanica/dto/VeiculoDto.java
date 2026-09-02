@@ -25,6 +25,4 @@ public class VeiculoDto {
     private String placa;
     @NotNull
     private UUID clienteId;
-    @NotEmpty
-    private Set<OrdemDeServicoEntity> ordemDeServico;
 }

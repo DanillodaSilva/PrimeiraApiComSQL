@@ -1,6 +1,7 @@
 package br.com.daSilva.apiDeOficinaMecanica.dto;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
@@ -14,9 +15,9 @@ import java.util.UUID;
 @AllArgsConstructor
 @Builder
 public class ServicoDto {
-    @NotNull
+    @NotBlank
     private String nome;
-    @NotNull
+    @NotBlank
     private BigDecimal preco;
 
 }

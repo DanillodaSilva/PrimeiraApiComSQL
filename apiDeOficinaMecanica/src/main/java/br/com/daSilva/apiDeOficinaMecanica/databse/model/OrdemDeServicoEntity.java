@@ -4,12 +4,11 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.HashSet;
-import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
 
 @Entity
-@Table(name = "Clientes")
+@Table(name = "ordem_servico")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -17,17 +16,17 @@ import java.util.UUID;
 @Builder
 public class OrdemDeServicoEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     @Column(nullable = false)
-    private Optional<String> descricao;
+    private String descricao;
 
     @ManyToOne
-    @JoinColumn(name = "Cliente_id")
+    @JoinColumn(name = "cliente_id")
     private ClienteEntity cliente;
 
     @ManyToOne
-    @JoinColumn(name = "Veiculo_id")
+    @JoinColumn(name = "veiculo_id")
     private VeiculoEntity veiculo;
 
     @ManyToMany

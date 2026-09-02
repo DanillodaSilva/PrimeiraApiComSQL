@@ -21,9 +21,5 @@ public class ClienteDto {
     private String nome;
     @NotBlank
     private String email;
-    @NotEmpty
-    private Set<VeiculoEntity> veiculos;
-    @NotEmpty
-    private Set<OrdemDeServicoEntity> ordemDeServico;
 }
 
