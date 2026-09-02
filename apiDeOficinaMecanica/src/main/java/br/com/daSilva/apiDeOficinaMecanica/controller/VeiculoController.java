@@ -1,11 +1,8 @@
 package br.com.daSilva.apiDeOficinaMecanica.controller;
 
-import br.com.daSilva.apiDeOficinaMecanica.databse.model.ClienteEntity;
-import br.com.daSilva.apiDeOficinaMecanica.databse.model.VeiculoEntity;
-import br.com.daSilva.apiDeOficinaMecanica.dto.ClienteDto;
-import br.com.daSilva.apiDeOficinaMecanica.dto.VeiculoDto;
+import br.com.daSilva.apiDeOficinaMecanica.dto.request.VeiculoDto;
+import br.com.daSilva.apiDeOficinaMecanica.dto.response.VeiculoResponseDto;
 import br.com.daSilva.apiDeOficinaMecanica.exception.NotFoundException;
-import br.com.daSilva.apiDeOficinaMecanica.service.ClienteService;
 import br.com.daSilva.apiDeOficinaMecanica.service.VeiculoService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -29,13 +26,13 @@ public class VeiculoController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<VeiculoEntity> findAllVeiculo(){
+    public List<VeiculoResponseDto> findAllVeiculo(){
         return veiculoService.findVeiculo();
     }
 
     @GetMapping("/id/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public VeiculoEntity findClienteById(@Valid @PathVariable UUID id) throws NotFoundException {
+    public VeiculoResponseDto findClienteById(@Valid @PathVariable UUID id) throws NotFoundException {
         return veiculoService.findVeiculoById(id);
     }
 

@@ -1,7 +1,7 @@
 package br.com.daSilva.apiDeOficinaMecanica.controller;
 
-import br.com.daSilva.apiDeOficinaMecanica.databse.model.ClienteEntity;
-import br.com.daSilva.apiDeOficinaMecanica.dto.ClienteDto;
+import br.com.daSilva.apiDeOficinaMecanica.dto.request.ClienteDto;
+import br.com.daSilva.apiDeOficinaMecanica.dto.response.ClienteResponseDto;
 import br.com.daSilva.apiDeOficinaMecanica.exception.NotFoundException;
 import br.com.daSilva.apiDeOficinaMecanica.service.ClienteService;
 import jakarta.validation.Valid;
@@ -26,19 +26,19 @@ public class ClienteController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<ClienteEntity> findAllCliente(){
+    public List<ClienteResponseDto> findAllCliente(){
         return clienteService.findAll();
     }
 
     @GetMapping("/id/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ClienteEntity findClienteById(@Valid @PathVariable UUID id) throws NotFoundException {
+    public ClienteResponseDto findClienteById(@Valid @PathVariable UUID id) throws NotFoundException {
         return clienteService.findClienteById(id);
     }
 
     @GetMapping("/email/{email}")
     @ResponseStatus(HttpStatus.OK)
-    public ClienteEntity findClienteByEmail(@Valid @PathVariable String email) throws NotFoundException {
+    public ClienteResponseDto findClienteByEmail(@Valid @PathVariable String email) throws NotFoundException {
         return clienteService.findClienteByEmail(email);
     }
 

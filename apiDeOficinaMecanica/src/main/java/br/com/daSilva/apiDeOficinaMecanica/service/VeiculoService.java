@@ -6,7 +6,8 @@ import br.com.daSilva.apiDeOficinaMecanica.databse.model.VeiculoEntity;
 import br.com.daSilva.apiDeOficinaMecanica.databse.repository.IClienteRepository;
 import br.com.daSilva.apiDeOficinaMecanica.databse.repository.IOrdemDeServicoRepository;
 import br.com.daSilva.apiDeOficinaMecanica.databse.repository.IVeiculoRepository;
-import br.com.daSilva.apiDeOficinaMecanica.dto.VeiculoDto;
+import br.com.daSilva.apiDeOficinaMecanica.dto.request.VeiculoDto;
+import br.com.daSilva.apiDeOficinaMecanica.dto.response.VeiculoResponseDto;
 import br.com.daSilva.apiDeOficinaMecanica.exception.BadRequestException;
 import br.com.daSilva.apiDeOficinaMecanica.exception.NotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -24,8 +25,7 @@ public class VeiculoService {
 
     //  CRIAR CARRO
     public void criarVeiculo(VeiculoDto dto) {
-        ClienteEntity clienteEntity = cliente
-                .findById(dto.getClienteId())
+        ClienteEntity clientes = cliente.findById(dto.getClienteId())
                 .orElseThrow(() -> new NotFoundException("Cliente não encontrado"));
         VeiculoEntity carro = veiculo.findByPlaca(dto.getPlaca()).orElse(null);
         if (carro != null) {
@@ -34,21 +34,40 @@ public class VeiculoService {
         carro = VeiculoEntity.builder()
                 .modelo(dto.getModelo())
                 .placa(dto.getPlaca())
-                .cliente(clienteEntity)
+                .cliente(clientes)
                 .build();
         veiculo.save(carro);
     }
 
     //    FIND VEICULO BY ID
-    public VeiculoEntity findVeiculoById(UUID id) {
-        return veiculo
+    public VeiculoResponseDto findVeiculoById(UUID id) {
+
+        VeiculoEntity veiculoEntity = veiculo
                 .findById(id)
                 .orElseThrow(() -> new NotFoundException("Veiculo não encontrado"));
+
+        return new VeiculoResponseDto(
+                veiculoEntity.getId(),
+                veiculoEntity.getModelo(),
+                veiculoEntity.getPlaca(),
+                veiculoEntity.getCliente().getId()
+        );
     }
 
     //    FIND VEICULO
-    public List<VeiculoEntity> findVeiculo() {
-        return veiculo.findAll();
+    public List<VeiculoResponseDto> findVeiculo() {
+      List<VeiculoEntity> veiculoEntity = veiculo.findAll();
+
+        return veiculoEntity
+                .stream()
+                .map(carro -> new VeiculoResponseDto(
+                        carro.getId(),
+                        carro.getModelo(),
+                        carro.getPlaca(),
+                        carro.getCliente().getId()
+                ))
+                .toList();
+
     }
 
     //    DELETE VEICULO BY ID

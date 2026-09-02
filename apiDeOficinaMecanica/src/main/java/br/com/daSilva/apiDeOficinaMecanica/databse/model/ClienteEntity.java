@@ -23,12 +23,10 @@ public class ClienteEntity {
     private String nome;
     @Column(nullable = false, unique = true)
     private String email;
-
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
-    private Set<VeiculoEntity> veiculos = new HashSet<>();
-
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
-    private Set<OrdemDeServicoEntity> ordemDeServico = new HashSet<>();
+    @OneToMany(mappedBy = "cliente")
+    private Set<VeiculoEntity> veiculos;
+    @OneToMany(mappedBy = "cliente")
+    private Set<OrdemDeServicoEntity> ordemDeServico;
 
 }
 
