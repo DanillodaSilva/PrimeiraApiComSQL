@@ -27,6 +27,6 @@ public class VeiculoEntity {
     @JoinColumn(name = "cliente_id")
     private  ClienteEntity cliente;
 
-    @OneToMany(mappedBy = "veiculo", cascade = CascadeType.ALL)
-    private Set<OrdemDeServicoEntity> ordemDeServico = new HashSet<>();
+    @OneToOne(mappedBy = "veiculo", cascade = CascadeType.ALL)
+    private OrdemDeServicoEntity ordemDeServico;
 }

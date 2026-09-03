@@ -25,7 +25,7 @@ public class OrdemDeServicoEntity {
     @JoinColumn(name = "cliente_id")
     private ClienteEntity cliente;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "veiculo_id")
     private VeiculoEntity veiculo;
 

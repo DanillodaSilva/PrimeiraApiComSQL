@@ -76,12 +76,10 @@ public class VeiculoService {
         if (veiculoEntity == null) {
             throw new NotFoundException("Veiculo não encontrado");
         }
-        List<UUID> ordem = veiculoEntity
+        UUID ordem = veiculoEntity
                 .getOrdemDeServico()
-                .stream()
-                .map(OrdemDeServicoEntity::getId)
-                .toList();
-        ordemDeServico.deleteAllById(ordem);
+                .getId();
+        ordemDeServico.deleteById(ordem);
         veiculo.deleteById(id);
     }
 }
