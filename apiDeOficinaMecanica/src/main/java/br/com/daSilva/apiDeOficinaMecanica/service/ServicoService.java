@@ -5,7 +5,7 @@ import br.com.daSilva.apiDeOficinaMecanica.databse.repository.IServicoRepository
 import br.com.daSilva.apiDeOficinaMecanica.databse.repository.IVeiculoRepository;
 import br.com.daSilva.apiDeOficinaMecanica.dto.request.ServicoDto;
 import br.com.daSilva.apiDeOficinaMecanica.dto.response.ServicoResponseDto;
-import br.com.daSilva.apiDeOficinaMecanica.exception.BadRequestException;
+import br.com.daSilva.apiDeOficinaMecanica.exception.BadRequestExceptionn;
 import br.com.daSilva.apiDeOficinaMecanica.exception.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -25,7 +25,7 @@ public class ServicoService {
                 .findByNome(dto.getNome())
                 .orElse(null);
         if (servicoEntity != null){
-            throw new BadRequestException("Serviço já cadastrado");
+            throw new BadRequestExceptionn("Serviço já cadastrado");
         }
 
         servicoEntity = ServicoEntity.builder()

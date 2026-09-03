@@ -1,14 +1,13 @@
 package br.com.daSilva.apiDeOficinaMecanica.service;
 
 import br.com.daSilva.apiDeOficinaMecanica.databse.model.ClienteEntity;
-import br.com.daSilva.apiDeOficinaMecanica.databse.model.OrdemDeServicoEntity;
 import br.com.daSilva.apiDeOficinaMecanica.databse.model.VeiculoEntity;
 import br.com.daSilva.apiDeOficinaMecanica.databse.repository.IClienteRepository;
 import br.com.daSilva.apiDeOficinaMecanica.databse.repository.IOrdemDeServicoRepository;
 import br.com.daSilva.apiDeOficinaMecanica.databse.repository.IVeiculoRepository;
 import br.com.daSilva.apiDeOficinaMecanica.dto.request.VeiculoDto;
 import br.com.daSilva.apiDeOficinaMecanica.dto.response.VeiculoResponseDto;
-import br.com.daSilva.apiDeOficinaMecanica.exception.BadRequestException;
+import br.com.daSilva.apiDeOficinaMecanica.exception.BadRequestExceptionn;
 import br.com.daSilva.apiDeOficinaMecanica.exception.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -29,7 +28,7 @@ public class VeiculoService {
                 .orElseThrow(() -> new NotFoundException("Cliente não encontrado"));
         VeiculoEntity carro = veiculo.findByPlaca(dto.getPlaca()).orElse(null);
         if (carro != null) {
-            throw new BadRequestException("Placa de veiculo já cadastrada");
+            throw new BadRequestExceptionn("Placa de veiculo já cadastrada");
         }
         carro = VeiculoEntity.builder()
                 .modelo(dto.getModelo())

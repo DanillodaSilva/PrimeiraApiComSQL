@@ -12,7 +12,7 @@ import br.com.daSilva.apiDeOficinaMecanica.dto.request.OrdemDeServicoDto;
 import br.com.daSilva.apiDeOficinaMecanica.dto.response.OrdemServicoResponseDto;
 import br.com.daSilva.apiDeOficinaMecanica.dto.response.ServicoResponseDto;
 import br.com.daSilva.apiDeOficinaMecanica.dto.response.VeiculoResponseDto;
-import br.com.daSilva.apiDeOficinaMecanica.exception.BadRequestException;
+import br.com.daSilva.apiDeOficinaMecanica.exception.BadRequestExceptionn;
 import br.com.daSilva.apiDeOficinaMecanica.exception.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -36,7 +36,7 @@ public class OrdemServicoService {
         OrdemDeServicoEntity ordemDeServico = ordemDeServicoRepository
                 .findById(dto.getVeiculoId()).orElse(null);
         if (ordemDeServico != null) {
-            throw new BadRequestException("Ordem de serviço ja cadastrada");
+            throw new BadRequestExceptionn("Ordem de serviço ja cadastrada");
         }
         ClienteEntity cliente = clienteRepository
                 .findById(dto.getClienteId())
@@ -50,7 +50,7 @@ public class OrdemServicoService {
                 .findAllById(dto.getServicoIds()));
 
         if (servicoEntities.size() != dto.getServicoIds().size()) {
-            throw new BadRequestException("Um ou mais serviços não foram encontrados");
+            throw new BadRequestExceptionn("Um ou mais serviços não foram encontrados");
         }
         ordemDeServico = OrdemDeServicoEntity
                 .builder()
