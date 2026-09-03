@@ -1,6 +1,6 @@
 package br.com.daSilva.apiDeOficinaMecanica.controller;
 
-import br.com.daSilva.apiDeOficinaMecanica.dto.request.VeiculoDto;
+import br.com.daSilva.apiDeOficinaMecanica.dto.request.VeiculoRequestDto;
 import br.com.daSilva.apiDeOficinaMecanica.dto.response.VeiculoResponseDto;
 import br.com.daSilva.apiDeOficinaMecanica.exception.NotFoundException;
 import br.com.daSilva.apiDeOficinaMecanica.service.VeiculoService;
@@ -20,7 +20,7 @@ public class VeiculoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void criarVeiculo(@Valid @RequestBody VeiculoDto dto){
+    public void criarVeiculo(@Valid @RequestBody VeiculoRequestDto dto){
         veiculoService.criarVeiculo(dto);
     }
 

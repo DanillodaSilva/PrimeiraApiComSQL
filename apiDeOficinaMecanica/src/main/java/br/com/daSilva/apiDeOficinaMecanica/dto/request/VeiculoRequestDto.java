@@ -12,7 +12,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class VeiculoDto {
+public class VeiculoRequestDto {
     @NotBlank
     private String modelo;
     @NotBlank

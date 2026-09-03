@@ -1,6 +1,6 @@
 package br.com.daSilva.apiDeOficinaMecanica.controller;
 
-import br.com.daSilva.apiDeOficinaMecanica.dto.request.OrdemDeServicoDto;
+import br.com.daSilva.apiDeOficinaMecanica.dto.request.OrdemDeServicoRequestDto;
 import br.com.daSilva.apiDeOficinaMecanica.dto.response.OrdemServicoResponseDto;
 import br.com.daSilva.apiDeOficinaMecanica.service.OrdemServicoService;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +18,7 @@ public class OrdemDeServicoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void criarOrdemServico(@RequestBody OrdemDeServicoDto dto) {
+    public void criarOrdemServico(@RequestBody OrdemDeServicoRequestDto dto) {
         ordemServicoService.criarOrdemServico(dto);
     }
 
@@ -36,7 +36,7 @@ public class OrdemDeServicoController {
 
     @DeleteMapping("/id/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteOrdemServicoById(@RequestBody UUID id) {
+    public void deleteOrdemServicoById(@PathVariable UUID id) {
         ordemServicoService.deleteOrdem(id);
     }
 

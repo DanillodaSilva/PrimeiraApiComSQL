@@ -6,7 +6,6 @@ import jakarta.validation.constraints.Positive;
 import lombok.*;
 
 import java.math.BigDecimal;
-import java.util.UUID;
 
 
 @Getter
@@ -14,7 +13,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ServicoDto {
+public class ServicoRequestDto {
     @NotBlank
     private String nome;
     @NotNull

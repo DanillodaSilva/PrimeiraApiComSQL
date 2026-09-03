@@ -3,7 +3,7 @@ package br.com.daSilva.apiDeOficinaMecanica.service;
 import br.com.daSilva.apiDeOficinaMecanica.databse.model.ServicoEntity;
 import br.com.daSilva.apiDeOficinaMecanica.databse.repository.IServicoRepository;
 import br.com.daSilva.apiDeOficinaMecanica.databse.repository.IVeiculoRepository;
-import br.com.daSilva.apiDeOficinaMecanica.dto.request.ServicoDto;
+import br.com.daSilva.apiDeOficinaMecanica.dto.request.ServicoRequestDto;
 import br.com.daSilva.apiDeOficinaMecanica.dto.response.ServicoResponseDto;
 import br.com.daSilva.apiDeOficinaMecanica.exception.BadRequestExceptionn;
 import br.com.daSilva.apiDeOficinaMecanica.exception.NotFoundException;
@@ -19,7 +19,7 @@ public class ServicoService {
     private final IServicoRepository servicoRepository;
     private final IVeiculoRepository veiculoRepository;
 
-    public void criarServico(ServicoDto dto){
+    public void criarServico(ServicoRequestDto dto){
 
         ServicoEntity servicoEntity = servicoRepository
                 .findByNome(dto.getNome())

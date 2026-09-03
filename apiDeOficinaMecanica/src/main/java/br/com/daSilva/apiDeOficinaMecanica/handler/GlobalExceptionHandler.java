@@ -3,7 +3,6 @@ package br.com.daSilva.apiDeOficinaMecanica.handler;
 import br.com.daSilva.apiDeOficinaMecanica.exception.BadRequestExceptionn;
 import br.com.daSilva.apiDeOficinaMecanica.exception.ErrorResponse;
 import br.com.daSilva.apiDeOficinaMecanica.exception.NotFoundException;
-import org.apache.coyote.BadRequestException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -22,7 +21,7 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
     }
 
-    @ExceptionHandler(BadRequestException.class)
+    @ExceptionHandler(BadRequestExceptionn.class)
     public ResponseEntity<ErrorResponse> handlerBadRequest(BadRequestExceptionn exceptionn) {
         ErrorResponse response = ErrorResponse.builder()
                 .message(exceptionn.getMessage())

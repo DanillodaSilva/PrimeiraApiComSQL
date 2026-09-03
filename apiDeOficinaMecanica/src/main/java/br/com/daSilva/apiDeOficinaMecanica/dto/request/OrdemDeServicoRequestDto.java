@@ -5,7 +5,6 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
-import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -15,7 +14,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class OrdemDeServicoDto {
+public class OrdemDeServicoRequestDto {
 
     @NotBlank
     private String descricao;
@@ -25,7 +24,6 @@ public class OrdemDeServicoDto {
     private UUID veiculoId;
     @NotEmpty
     private Set<UUID> servicoIds;
-    @NotNull
-    private UUID id;
+
 
 }

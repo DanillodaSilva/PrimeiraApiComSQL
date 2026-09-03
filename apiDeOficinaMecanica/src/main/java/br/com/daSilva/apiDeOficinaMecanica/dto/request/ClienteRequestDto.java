@@ -11,7 +11,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ClienteDto {
+public class ClienteRequestDto {
     @NotBlank
     private String nome;
     @NotBlank

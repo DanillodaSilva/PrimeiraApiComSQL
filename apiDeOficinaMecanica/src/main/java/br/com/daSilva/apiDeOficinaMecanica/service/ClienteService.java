@@ -7,7 +7,7 @@ import br.com.daSilva.apiDeOficinaMecanica.databse.model.VeiculoEntity;
 import br.com.daSilva.apiDeOficinaMecanica.databse.repository.IClienteRepository;
 import br.com.daSilva.apiDeOficinaMecanica.databse.repository.IOrdemDeServicoRepository;
 import br.com.daSilva.apiDeOficinaMecanica.databse.repository.IVeiculoRepository;
-import br.com.daSilva.apiDeOficinaMecanica.dto.request.ClienteDto;
+import br.com.daSilva.apiDeOficinaMecanica.dto.request.ClienteRequestDto;
 import br.com.daSilva.apiDeOficinaMecanica.dto.response.ClienteResponseDto;
 import br.com.daSilva.apiDeOficinaMecanica.dto.response.VeiculoResponseDto;
 import br.com.daSilva.apiDeOficinaMecanica.exception.BadRequestExceptionn;
@@ -29,7 +29,7 @@ public class ClienteService {
     private final IVeiculoRepository veiculoRepository;
 
     //  CRIAR CLIENTE - POST
-    public void criarCliente(ClienteDto clienteDto) throws BadRequestExceptionn {
+    public void criarCliente(ClienteRequestDto clienteDto) throws BadRequestExceptionn {
         ClienteEntity cliente = clienteRepository.findByEmail(clienteDto.getEmail()).orElse(null);
         if (cliente != null) {
             throw new BadRequestExceptionn("Email ja cadastrado");

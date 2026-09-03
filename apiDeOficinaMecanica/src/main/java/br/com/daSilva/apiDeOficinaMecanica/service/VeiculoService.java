@@ -5,7 +5,7 @@ import br.com.daSilva.apiDeOficinaMecanica.databse.model.VeiculoEntity;
 import br.com.daSilva.apiDeOficinaMecanica.databse.repository.IClienteRepository;
 import br.com.daSilva.apiDeOficinaMecanica.databse.repository.IOrdemDeServicoRepository;
 import br.com.daSilva.apiDeOficinaMecanica.databse.repository.IVeiculoRepository;
-import br.com.daSilva.apiDeOficinaMecanica.dto.request.VeiculoDto;
+import br.com.daSilva.apiDeOficinaMecanica.dto.request.VeiculoRequestDto;
 import br.com.daSilva.apiDeOficinaMecanica.dto.response.VeiculoResponseDto;
 import br.com.daSilva.apiDeOficinaMecanica.exception.BadRequestExceptionn;
 import br.com.daSilva.apiDeOficinaMecanica.exception.NotFoundException;
@@ -23,7 +23,7 @@ public class VeiculoService {
     private final IOrdemDeServicoRepository ordemDeServico;
 
     //  CRIAR CARRO
-    public void criarVeiculo(VeiculoDto dto) {
+    public void criarVeiculo(VeiculoRequestDto dto) {
         ClienteEntity clientes = cliente.findById(dto.getClienteId())
                 .orElseThrow(() -> new NotFoundException("Cliente não encontrado"));
         VeiculoEntity carro = veiculo.findByPlaca(dto.getPlaca()).orElse(null);

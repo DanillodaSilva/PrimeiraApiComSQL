@@ -1,6 +1,6 @@
 package br.com.daSilva.apiDeOficinaMecanica.controller;
 
-import br.com.daSilva.apiDeOficinaMecanica.dto.request.ServicoDto;
+import br.com.daSilva.apiDeOficinaMecanica.dto.request.ServicoRequestDto;
 import br.com.daSilva.apiDeOficinaMecanica.dto.response.ServicoResponseDto;
 import br.com.daSilva.apiDeOficinaMecanica.service.ServicoService;
 import jakarta.validation.Valid;
@@ -22,7 +22,7 @@ public class ServicoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void criarServico(@Valid @RequestBody ServicoDto dto) {
+    public void criarServico(@Valid @RequestBody ServicoRequestDto dto) {
         servicoService.criarServico(dto);
     }
 
@@ -40,7 +40,7 @@ public class ServicoController {
 
     @DeleteMapping("/id/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteServico(@Valid @RequestBody UUID id) {
+    public void deleteServico(@Valid @PathVariable UUID id) {
         servicoService.deleteService(id);
     }
 }

@@ -1,6 +1,6 @@
 package br.com.daSilva.apiDeOficinaMecanica.controller;
 
-import br.com.daSilva.apiDeOficinaMecanica.dto.request.ClienteDto;
+import br.com.daSilva.apiDeOficinaMecanica.dto.request.ClienteRequestDto;
 import br.com.daSilva.apiDeOficinaMecanica.dto.response.ClienteResponseDto;
 import br.com.daSilva.apiDeOficinaMecanica.exception.NotFoundException;
 import br.com.daSilva.apiDeOficinaMecanica.service.ClienteService;
@@ -20,7 +20,7 @@ public class ClienteController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void criarCliente(@Valid @RequestBody ClienteDto dto){
+    public void criarCliente(@Valid @RequestBody ClienteRequestDto dto){
         clienteService.criarCliente(dto);
     }
 

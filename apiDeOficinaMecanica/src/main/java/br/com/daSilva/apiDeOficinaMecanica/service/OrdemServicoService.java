@@ -8,7 +8,7 @@ import br.com.daSilva.apiDeOficinaMecanica.databse.repository.IClienteRepository
 import br.com.daSilva.apiDeOficinaMecanica.databse.repository.IOrdemDeServicoRepository;
 import br.com.daSilva.apiDeOficinaMecanica.databse.repository.IServicoRepository;
 import br.com.daSilva.apiDeOficinaMecanica.databse.repository.IVeiculoRepository;
-import br.com.daSilva.apiDeOficinaMecanica.dto.request.OrdemDeServicoDto;
+import br.com.daSilva.apiDeOficinaMecanica.dto.request.OrdemDeServicoRequestDto;
 import br.com.daSilva.apiDeOficinaMecanica.dto.response.OrdemServicoResponseDto;
 import br.com.daSilva.apiDeOficinaMecanica.dto.response.ServicoResponseDto;
 import br.com.daSilva.apiDeOficinaMecanica.dto.response.VeiculoResponseDto;
@@ -32,9 +32,9 @@ public class OrdemServicoService {
     private final IServicoRepository servicoRepository;
     private final IVeiculoRepository veiculoRepository;
 
-    public void criarOrdemServico(OrdemDeServicoDto dto) {
+    public void criarOrdemServico(OrdemDeServicoRequestDto dto) {
         OrdemDeServicoEntity ordemDeServico = ordemDeServicoRepository
-                .findById(dto.getVeiculoId()).orElse(null);
+                .findByVeiculoId(dto.getVeiculoId()).orElse(null);
         if (ordemDeServico != null) {
             throw new BadRequestExceptionn("Ordem de serviço ja cadastrada");
         }
